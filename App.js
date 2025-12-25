@@ -9,7 +9,7 @@ import { Hero } from "./components/Hero.js";
 
 function App() {
   return html`
-    <div class="wrapper sidebar" style="--sidebar-width: 0; --gutter: 0">
+    <div class="wrapper">
       <${Header} />
       <main class="flow" style="--flow-space: var(--space-2xl)">
         <${Hero} />

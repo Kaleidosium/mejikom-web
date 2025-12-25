@@ -17,7 +17,16 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-inline-size: 60ch;
+  margin-inline: auto;
   position: relative;
+}
+
+@media (width >= 1000px) {
+  .wrapper {
+    display: block;
+    position: relative;
+  }
 }
 
 .cluster {
@@ -26,23 +35,6 @@
   gap: var(--gutter, var(--space-md));
   justify-content: var(--cluster-justify, center);
   align-items: var(--cluster-align, center);
-}
-
-.sidebar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--gutter, var(--space-md));
-}
-
-.sidebar > :first-child {
-  flex-basis: var(--sidebar-width, 20rem);
-  flex-grow: 1;
-}
-
-.sidebar > :last-child {
-  flex-basis: 0;
-  flex-grow: 999;
-  min-inline-size: var(--main-min-width, 50%);
 }
 
 .center {
