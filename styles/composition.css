@@ -1,0 +1,57 @@
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+@media (width >= 1000px) {
+  #app {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: var(--space-2xl);
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gutter, var(--space-md));
+  justify-content: var(--cluster-justify, center);
+  align-items: var(--cluster-align, center);
+}
+
+.sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gutter, var(--space-md));
+}
+
+.sidebar > :first-child {
+  flex-basis: var(--sidebar-width, 20rem);
+  flex-grow: 1;
+}
+
+.sidebar > :last-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: var(--main-min-width, 50%);
+}
+
+.center {
+  box-sizing: content-box;
+  margin-inline: auto;
+  max-inline-size: var(--center-max, 60ch);
+  padding-inline: var(--center-padding, var(--space-md));
+}
+
+.flow > * + * {
+  margin-top: var(--flow-space, 1em);
+}

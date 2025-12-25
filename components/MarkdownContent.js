@@ -8,7 +8,9 @@ import { html } from "htm/preact";
 export default function MarkdownContent({ src }) {
   return html`
     <zero-md src="${src}">
-      <template></template>
+      <template>
+        <link rel="stylesheet" href="../styles/styles.css" />
+      </template>
     </zero-md>
   `;
 }

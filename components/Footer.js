@@ -2,8 +2,8 @@ import { html } from "htm/preact";
 
 export function Footer() {
   return html`
-    <footer class="footer">
-      <div class="footer__social">
+    <footer class="footer text-center">
+      <div class="footer__social cluster" style="--gutter: var(--space-lg)">
         <a href="#telegram" class="social-link">
           <img
             class="social-icon"
