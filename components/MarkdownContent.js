@@ -10,6 +10,34 @@ export default function MarkdownContent({ src }) {
     <zero-md src="${src}">
       <template>
         <link rel="stylesheet" href="../styles/styles.css" />
+        <style>
+					h1, h2, h3, h4, h5, h6 {
+						text-align: center;
+					}
+
+					p {
+						text-align: justify;
+					}
+
+					hr {
+						margin: 1rem 0;
+						border: none;
+						border-top: 1px solid #16161d;
+						overflow: visible;
+						text-align: center;
+						height: 5px;
+					}
+
+					hr::after {
+						font-family: "Times New Roman",Times,serif;
+						color: var(--color-text);
+						background: var(--color-bg);
+						content: "§";
+						padding: 0 5px;
+						position: relative;
+						top: -14px;
+					}
+        </style>
       </template>
     </zero-md>
   `;
