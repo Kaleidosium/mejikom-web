@@ -2,10 +2,7 @@ import "preact/debug";
 
 import { html } from "htm/preact";
 import { render } from "preact";
-import {
-	useEffect,
-	useState,
-} from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 
 import { Footer } from "./components/Footer.js";
 import { Header } from "./components/Header.js";
@@ -33,23 +30,31 @@ function App() {
   let content;
   switch (page) {
     case "terms":
-      content = html`<${Terms} />`;
+      content = html`
+        <${Terms} />
+      `;
       break;
     case "prices":
-      content = html`<${Prices} />`;
+      content = html`
+        <${Prices} />
+      `;
       break;
     case "gallery":
-      content = html`<${Gallery} />`;
+      content = html`
+        <${Gallery} />
+      `;
       break;
     case "home":
     default:
-      content = html`<${Home} />`;
+      content = html`
+        <${Home} />
+      `;
       break;
   }
 
   return html`
     <div class="wrapper">
-      <${Header} page=${page} />
+      <${Header} page="${page}" />
       <main class="flow" style="--flow-space: var(--space-2xl)">
         ${content}
         <${Footer} />
