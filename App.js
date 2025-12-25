@@ -8,8 +8,10 @@ import { Hero } from './components/Hero.js';
 
 function App() {
   return html`
-    <${Header} />
-    <${Hero} />
+    <div class="layout-wrapper">
+      <${Header} />
+      <${Hero} />
+    </div>
   `;
 }
 
