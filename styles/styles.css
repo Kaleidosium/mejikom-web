@@ -22,16 +22,10 @@
   --color-text-light: #5A7B9B;
   --color-text-dark: #1A2433;
 
-  /* Background Colors - Warm cream */
+  /* Background Colors */
   --color-bg: #FFF5F0;
   --color-bg-light: #FFFBF8;
   --color-bg-dark: #F5E6DC;
-
-  /* Neutral/Utility Colors */
-  --color-white: #FFFFFF;
-  --color-gray-light: #E8E8E8;
-  --color-gray: #B0B0B0;
-  --color-gray-dark: #6B6B6B;
 
   /* Spacing Scale */
   --space-xs: 0.5rem;
@@ -52,10 +46,6 @@
   /* Transitions */
   --transition-fast: 150ms ease;
   --transition-base: 300ms ease;
-
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -86,7 +76,7 @@ body {
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
-    padding-top: var(--space-xl);
+    padding: var(--space-xl) 0;
   }
 }
 
@@ -143,7 +133,7 @@ button {
 
 /* Header Block */
 .header {
-  padding: var(--space-xl) var(--space-lg) 0 var(--space-lg);
+  padding: var(--space-xl) 0 0 0;
   background-color: transparent;
   position: relative;
   z-index: 10;
@@ -176,7 +166,6 @@ button {
     flex-direction: column;
     max-width: none;
     margin: 0;
-    gap: 0;
   }
 }
 
@@ -184,7 +173,7 @@ button {
   padding: var(--space-xs) clamp(var(--space-sm), 3vw, var(--space-md));
   border-radius: 1em 1em 0 0;
   text-decoration: none;
-  color: var(--color-white);
+  color: var(--color-bg);
   font-size: clamp(var(--font-size-sm), 2vw, var(--font-size-base));
   transition: all var(--transition-fast);
   background-color: var(--color-primary);
@@ -210,7 +199,7 @@ button {
 
 .nav__item--active {
   color: var(--color-text);
-  background-color: var(--color-white);
+  background-color: var(--color-bg);
 }
 
 /* Hero Section Block */
@@ -233,12 +222,11 @@ button {
 }
 
 .hero__content {
-  background-color: var(--color-white);
+  background-color: var(--color-bg);
   padding: clamp(var(--space-md), 3.5vw, var(--space-xl));
   max-width: 600px;
   width: 100%;
   text-align: center;
-  box-shadow: 0 var(--space-xs) 0 var(--color-primary);
 }
 
 @media (width >= 1000px) {
@@ -326,7 +314,7 @@ button {
 
 .btn--primary {
   background-color: var(--color-primary);
-  color: var(--color-white);
+  color: var(--color-bg);
 }
 
 .btn--primary:hover {
@@ -349,7 +337,7 @@ button {
 /* Footer Block */
 .footer {
   padding: var(--space-xl) var(--space-lg);
-  background-color: var(--color-white);
+  background-color: var(--color-bg);
   border-top: 1px solid #EEE;
   text-align: center;
 }
@@ -368,15 +356,10 @@ button {
   width: 44px;
   height: 44px;
   background-color: var(--color-primary);
-  color: var(--color-white);
+  color: var(--color-bg);
   border-radius: 50%;
   transition: all var(--transition-base);
   text-decoration: none;
-}
-
-.social-link:hover {
-  background-color: #3a8578;
-  transform: translateY(-4px);
 }
 
 .social-icon {
