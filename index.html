@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>Mejikom!!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
+
+    <link rel="stylesheet" href="https://unpkg.com/xp.css" />
+
+    <script type="importmap">
+      {
+        "imports": {
+          "preact": "https://esm.sh/preact@10.28.0",
+          "preact/": "https://esm.sh/preact@10.28.0/",
+          "@preact/signals": "https://esm.sh/@preact/signals@2.5.1?external=preact",
+          "htm/preact": "https://esm.sh/htm@3.1.1/preact?external=preact"
+        }
+      }
+    </script>
+		<script type="module" src="https://cdn.jsdelivr.net/npm/zero-md@3?register"></script>
+  </head>
+
+  <body>
+    <div class="background background--fixed background--web"></div>
+    <div id="app"></div>
+    <script type="module" src="App.js"></script>
+  </body>
+</html>
