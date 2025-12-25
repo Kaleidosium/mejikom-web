@@ -157,7 +157,6 @@
 
 .hero__text {
   font-size: var(--font-size-base);
-  line-height: 1.6;
   margin-block-end: var(--space-md);
   color: var(--color-text);
 }
