@@ -4,7 +4,7 @@
 
 ---
 
-Hello and welcome to my commission page! My name is Meji, a small furry artist
+Hello and welcome to my website! My name is Meji, a small furry artist
 based in Indonesia. I'm 19 y.o and i use she/her pronouns. I like to draw stuff
 mostly about furries, my ocs, and stuffs that i like!
 
