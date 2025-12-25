@@ -1,4 +1,4 @@
-import { html } from 'htm/preact';
+import { html } from "htm/preact";
 
 export function Header() {
   return html`
