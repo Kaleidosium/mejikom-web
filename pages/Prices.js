@@ -1,12 +1,12 @@
 import { html } from "htm/preact";
 
-import MarkdownContent from "./MarkdownContent.js";
+import MarkdownContent from "../components/MarkdownContent.js";
 
-export function Terms() {
+export function Prices() {
   return html`
     <section class="hero">
       <div class="hero__content flow">
-        <${MarkdownContent} src="content/terms.md" />
+        <${MarkdownContent} src="content/prices.md" />
       </div>
     </section>
   `;

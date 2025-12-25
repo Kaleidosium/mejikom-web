@@ -8,11 +8,11 @@ import {
 } from "preact/hooks";
 
 import { Footer } from "./components/Footer.js";
-import { Gallery } from "./components/Gallery.js";
 import { Header } from "./components/Header.js";
-import { Home } from "./components/Home.js";
-import { Prices } from "./components/Prices.js";
-import { Terms } from "./components/Terms.js";
+import { Gallery } from "./pages/Gallery.js";
+import { Home } from "./pages/Home.js";
+import { Prices } from "./pages/Prices.js";
+import { Terms } from "./pages/Terms.js";
 
 function App() {
   const [page, setPage] = useState("home");
