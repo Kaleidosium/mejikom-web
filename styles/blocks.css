@@ -47,6 +47,7 @@
   display: flex;
   justify-content: stretch;
   flex-wrap: wrap;
+	align-items: flex-end;
 }
 
 @media (width >= 1000px) {
@@ -71,7 +72,7 @@
   transition: all var(--transition-fast);
   background-color: var(--color-primary);
   flex: 1;
-  text-align: center;
+	text-align: center;
 }
 
 @media (width >= 1000px) {
@@ -79,8 +80,10 @@
     border-radius: 100pt 0 0 100pt;
     flex: none;
     padding-block: var(--space-sm);
-    padding-inline: var(--space-sm);
-    min-inline-size: 120px;
+    padding-inline: var(--space-md) var(--space-sm);
+    min-inline-size: 0;
+    text-align: right;
+    width: max-content;
   }
 }
 
@@ -93,6 +96,14 @@
   color: var(--color-bg);
   font-weight: 700;
   background-color: var(--color-accent);
+	padding-block: var(--space-md);
+}
+
+@media (width >= 1000px) {
+  .nav__item[aria-current="page"] {
+		padding-block: var(--space-sm);
+    padding-inline-start: var(--space-lg);
+  }
 }
 
 /* Hero Section Block */
@@ -115,6 +126,7 @@
   background-color: var(--color-bg);
   padding: clamp(var(--space-sm), 3.5vw, var(--space-xl));
   box-shadow: 0 var(--space-xs) 0 var(--color-primary);
+	inline-size: 100%;
 }
 
 @media (width >= 1000px) {
@@ -122,6 +134,7 @@
     box-shadow: var(--space-xs) var(--space-xs) 0 var(--color-primary);
     border-start-start-radius: 0;
     margin-block-start: 0;
+		min-block-size: 28vh;
   }
 }
 

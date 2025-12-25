@@ -2,11 +2,11 @@ import { html } from "htm/preact";
 
 import MarkdownContent from "./MarkdownContent.js";
 
-export function Hero() {
+export function Gallery() {
   return html`
     <section class="hero">
       <div class="hero__content flow">
-        <${MarkdownContent} src="content/intro.md" />
+        <${MarkdownContent} src="content/gallery.md" />
       </div>
     </section>
   `;
