@@ -11,7 +11,7 @@ export default function MarkdownContent({ src }) {
       <template>
         <link rel="stylesheet" href="../styles/styles.css" />
         <style>
-					h1, h2, h3, h4, h5, h6 {
+        	h1, h2, h3, h4, h5, h6 {
 						text-align: center;
 					}
 
@@ -36,6 +36,16 @@ export default function MarkdownContent({ src }) {
 						padding: 0 5px;
 						position: relative;
 						top: -14px;
+					}
+
+					blockquote {
+						word-break: break-word;
+						margin: 1rem 0 1.5rem;
+						margin-left: 0;
+						margin-trim: block;
+						padding: 1rem 1.25rem;
+						background-color: var(--color-bg-dark);
+						border-left: .25rem solid var(--color-secondary);
 					}
         </style>
       </template>
