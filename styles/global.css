@@ -1,3 +1,10 @@
+/* [DEBUG] Highlight all elements with a light background color */
+/*
+* {
+	background: rgb(0 100 000/ 0.1) !important;
+}
+*/
+
 html, body {
   height: 100%;
 }
@@ -61,4 +68,19 @@ th {
 
 th {
   text-align: left;
+}
+
+a {
+	color: var(--color-accent);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+	transition: color var(--transition-fast);
+}
+
+a:hover {
+	color: var(--color-accent-light);
+}
+
+a:visited {
+	color: var(--color-accent-dark);
 }

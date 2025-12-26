@@ -1,6 +1,33 @@
-/* [DEBUG] Highlight all elements with a light background color */
-/*
-* {
-	background: rgb(0 100 000/ 0.1) !important;
+.btn[data-variant="primary"] {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
 }
-*/
+
+.btn[data-variant="primary"]:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn[data-variant="secondary"] {
+  background-color: transparent;
+  color: var(--color-secondary);
+  border: 2px solid var(--color-secondary);
+}
+
+.btn[data-variant="secondary"]:hover {
+  background-color: var(--color-secondary-light);
+  transform: translateY(-2px);
+}
+
+.image-grid[data-variant="square"] img {
+  aspect-ratio: 1 / 1;
+}
+
+.image-grid[data-variant="landscape"] img {
+	aspect-ratio: 4 / 3;
+}
+
+.image-grid[data-variant="portrait"] img {
+  aspect-ratio: 3 / 4;
+}
