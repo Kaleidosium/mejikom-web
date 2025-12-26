@@ -47,6 +47,21 @@ export default function MarkdownContent({ src }) {
         	background-color: var(--color-bg-dark);
         	border-left: .25rem solid var(--color-secondary);
         }
+
+        a {
+        	color: var(--color-accent);
+        	text-decoration: underline;
+        	text-underline-offset: 2px;
+        	transition: color var(--transition-fast);
+        }
+
+        a:hover {
+        	color: var(--color-accent-light);
+        }
+
+        a:visited {
+        	color: var(--color-accent);
+        }
         </style>
       </template>
     </zero-md>

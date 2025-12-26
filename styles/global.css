@@ -69,18 +69,3 @@ th {
 th {
   text-align: left;
 }
-
-a {
-  color: var(--color-accent);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  transition: color var(--transition-fast);
-}
-
-a:hover {
-  color: var(--color-accent-light);
-}
-
-a:visited {
-  color: var(--color-accent-dark);
-}
