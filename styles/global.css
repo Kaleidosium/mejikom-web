@@ -71,16 +71,16 @@ th {
 }
 
 a {
-	color: var(--color-accent);
-	text-decoration: underline;
-	text-underline-offset: 2px;
-	transition: color var(--transition-fast);
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--transition-fast);
 }
 
 a:hover {
-	color: var(--color-accent-light);
+  color: var(--color-accent-light);
 }
 
 a:visited {
-	color: var(--color-accent-dark);
+  color: var(--color-accent-dark);
 }

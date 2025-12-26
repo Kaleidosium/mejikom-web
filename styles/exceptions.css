@@ -25,7 +25,7 @@
 }
 
 .image-grid[data-variant="landscape"] img {
-	aspect-ratio: 4 / 3;
+  aspect-ratio: 4 / 3;
 }
 
 .image-grid[data-variant="portrait"] img {
