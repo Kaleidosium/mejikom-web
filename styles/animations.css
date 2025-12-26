@@ -73,7 +73,7 @@
 }
 
 .animate-slide-up {
-  animation: fadeInUp var(--transition-base) ease-out forwards;
+  animation: fadeInUp var(--transition-fast) ease-out forwards;
 }
 
 .animate-pop-in {
