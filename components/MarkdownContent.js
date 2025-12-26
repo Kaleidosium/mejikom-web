@@ -64,11 +64,11 @@ export default function MarkdownContent({ src }) {
         }
 
         h1, h2, h3, h4, h5, h6 {
-            animation: fadeInDown 0.8s ease-out;
+          animation: fadeInDown 0.8s ease-out;
         }
 
         p, li {
-            animation: fadeInUp 0.5s ease-out both;
+          animation: fadeInUp 0.5s ease-out both;
         }
 
         /* Stagger paragraphs a bit */

@@ -8,14 +8,17 @@ export function Footer() {
   const handleDiscordClick = (e) => {
     e.preventDefault();
     navigator.clipboard.writeText(SOCIALS.discordUsername).then(() => {
-      alert(`Discord username @${SOCIALS.discordUsername} copied to clipboard!`);
+      alert(
+        `Discord username @${SOCIALS.discordUsername} copied to clipboard!`,
+      );
     });
   };
 
   return html`
     <footer class="footer text-center">
       <div class="footer__social cluster" style="--gutter: var(--space-lg)">
-        <a href="${SOCIALS.telegram}" class="social-link hover-wiggle">
+        <a href="${SOCIALS
+          .telegram}" target="_blank" class="social-link hover-wiggle">
           <img
             class="social-icon"
             aria-label="Telegram"
@@ -24,7 +27,8 @@ export function Footer() {
             src="https://cdn.simpleicons.org/telegram?viewbox=auto"
           />
         </a>
-        <a href="${SOCIALS.twitter}" class="social-link hover-wiggle">
+        <a href="${SOCIALS
+          .twitter}" target="_blank" class="social-link hover-wiggle">
           <img
             class="social-icon"
             aria-label="X (Twitter)"
@@ -33,7 +37,8 @@ export function Footer() {
             src="https://cdn.simpleicons.org/x?viewbox=auto"
           />
         </a>
-        <a href="${SOCIALS.instagram}" class="social-link hover-wiggle">
+        <a href="${SOCIALS
+          .instagram}" target="_blank" class="social-link hover-wiggle">
           <img
             class="social-icon"
             aria-label="Instagram"
@@ -55,7 +60,8 @@ export function Footer() {
             src="https://cdn.simpleicons.org/discord?viewbox=auto"
           />
         </a>
-        <a href="${SOCIALS.kofi}" class="social-link hover-wiggle">
+        <a href="${SOCIALS
+          .kofi}" target="_blank" class="social-link hover-wiggle">
           <img
             class="social-icon"
             aria-label="Ko-fi"
