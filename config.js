@@ -4,6 +4,6 @@ export const SOCIALS = {
   telegram: "http://t.me/mejikucing",
   twitter: "https://x.com/MejiMejikom",
   instagram: "https://www.instagram.com/mejimejikom/",
-  discord: "mejikucing",
+  discordUsername: "mejikucing",
   kofi: "https://ko-fi.com/mejikucing",
 };

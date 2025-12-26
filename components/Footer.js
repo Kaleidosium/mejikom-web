@@ -3,12 +3,12 @@ import { html } from "htm/preact";
 import { SOCIALS } from "../config.js";
 
 export function Footer() {
-  const tooltip = `Discord (@${SOCIALS.discord})`;
+  const tooltip = `Discord (@${SOCIALS.discordUsername})`;
 
   const handleDiscordClick = (e) => {
     e.preventDefault();
-    navigator.clipboard.writeText(SOCIALS.discord).then(() => {
-      alert(`Discord username @${SOCIALS.discord} copied to clipboard!`);
+    navigator.clipboard.writeText(SOCIALS.discordUsername).then(() => {
+      alert(`Discord username @${SOCIALS.discordUsername} copied to clipboard!`);
     });
   };
 
@@ -50,7 +50,7 @@ export function Footer() {
         >
           <img
             class="social-icon"
-            aria-label="Discord"
+            aria-label="Discord Username"
             height="20"
             src="https://cdn.simpleicons.org/discord?viewbox=auto"
           />
