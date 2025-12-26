@@ -18,11 +18,15 @@ scenery.
 > **NOTICE:** The price is doubled from the base price for each extra character
 > you add.
 
+---
+
 ## REGULAR STYLE
 
-![Regular Style Example 1](placeholder_image_1.png)
-![Regular Style Example 2](placeholder_image_2.png)
-![Regular Style Example 3](placeholder_image_3.png)
+<div class="image-grid" data-variant="square">
+  <img src="../assets/prices/70347682.jpg" alt="meji" title="meji" loading="lazy">
+  <img src="../assets/prices/a6abcee1.jpg" alt="mad mew mew" title="mad mew mew" loading="lazy">
+  <img src="../assets/prices/5c05e362.jpg" alt="glenmario" title="glenmario" loading="lazy">
+</div>
 
 The classic Meji style you often see in my social media pages. Simple shaded and
 a bit anime-ish.
@@ -37,9 +41,11 @@ You can also request this style without any shading/flat colored.
 
 ## SKETCHY
 
-![Sketchy Style Example 1](placeholder_image_4.png)
-![Sketchy Style Example 2](placeholder_image_5.png)
-![Sketchy Style Example 3](placeholder_image_6.png)
+<div class="image-grid" data-variant="square">
+  <img src="../assets/prices/729a6878.jpg" alt="meji" title="meji" loading="lazy">
+  <img src="../assets/prices/11cb56fc.jpg" alt="mad mew mew" title="mad mew mew" loading="lazy">
+  <img src="../assets/prices/e83f8add.jpg" alt="meji" title="meji" loading="lazy">
+</div>
 
 An experimental BNW style with grayscale coloring and halftone technique.
 
@@ -54,9 +60,11 @@ this style and become one of my experiment subject if you're interested!
 
 ## CHIBI
 
-![Chibi Style Example 1](placeholder_image_7.png)
-![Chibi Style Example 2](placeholder_image_8.png)
-![Chibi Style Example 3](placeholder_image_9.png)
+<div class="image-grid" data-variant="square">
+  <img src="../assets/prices/a653f923.png" alt="okarun" title="okarun" loading="lazy">
+  <img src="../assets/prices/1bbcac71.png" alt="meji cati" title="meji cati" loading="lazy">
+  <img src="../assets/prices/6a49638b.jpg" alt="fennekow" title="fennekow" loading="lazy">
+</div>
 
 Classic chibi style everyone knows, with simplified shading and thick lineart.
 
@@ -70,9 +78,11 @@ You can also request this style without any shading/flat colored.
 
 ## DOODLES
 
-![Canvas Doodle Example 1](placeholder_image_7.png)
-![Canvas Doodle Example 2](placeholder_image_8.png)
-![Canvas Doodle Example 3](placeholder_image_9.png)
+<div class="image-grid" data-variant="square">
+  <img src="../assets/prices/80501245.jpg" alt="sukuna" title="sukuna" loading="lazy">
+  <img src="../assets/prices/3fd9c1d7.jpg" alt="belial" title="belial" loading="lazy">
+  <img src="../assets/prices/0bcdc9ab.jpg" alt="frankenprawn" title="frankenprawn" loading="lazy">
+</div>
 
 Random Doodle of your chosen character with various poses on one canvas!
 

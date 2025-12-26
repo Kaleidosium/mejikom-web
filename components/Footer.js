@@ -1,34 +1,53 @@
 import { html } from "htm/preact";
 
+import { SOCIALS } from "../config.js";
+
 export function Footer() {
+  const tooltip = `Discord (@${SOCIALS.discord})`;
+
+  const handleDiscordClick = (e) => {
+    e.preventDefault();
+    navigator.clipboard.writeText(SOCIALS.discord).then(() => {
+      alert(`Discord username @${SOCIALS.discord} copied to clipboard!`);
+    });
+  };
+
   return html`
     <footer class="footer text-center">
       <div class="footer__social cluster" style="--gutter: var(--space-lg)">
-        <a href="#telegram" class="social-link">
+        <a href="${SOCIALS.telegram}" class="social-link">
           <img
             class="social-icon"
             aria-label="Telegram"
+            title="Telegram"
             height="20"
             src="https://cdn.simpleicons.org/telegram?viewbox=auto"
           />
         </a>
-        <a href="#twitter" class="social-link">
+        <a href="${SOCIALS.twitter}" class="social-link">
           <img
             class="social-icon"
-            aria-label="Twitter"
+            aria-label="X (Twitter)"
+            title="X (Twitter)"
             height="20"
             src="https://cdn.simpleicons.org/x?viewbox=auto"
           />
         </a>
-        <a href="#instagram" class="social-link">
+        <a href="${SOCIALS.instagram}" class="social-link">
           <img
             class="social-icon"
             aria-label="Instagram"
+            title="Instagram"
             height="20"
             src="https://cdn.simpleicons.org/instagram?viewbox=auto"
           />
         </a>
-        <a href="#discord" class="social-link">
+        <a
+          href="#"
+          class="social-link"
+          onClick="${handleDiscordClick}"
+          title="${tooltip}"
+        >
           <img
             class="social-icon"
             aria-label="Discord"
@@ -36,10 +55,11 @@ export function Footer() {
             src="https://cdn.simpleicons.org/discord?viewbox=auto"
           />
         </a>
-        <a href="#kofi" class="social-link">
+        <a href="${SOCIALS.kofi}" class="social-link">
           <img
             class="social-icon"
             aria-label="Ko-fi"
+            title="Ko-fi"
             height="20"
             src="https://cdn.simpleicons.org/kofi?viewbox=auto"
           />
