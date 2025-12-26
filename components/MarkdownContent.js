@@ -62,6 +62,19 @@ export default function MarkdownContent({ src }) {
         a:visited {
         	color: var(--color-accent);
         }
+
+        h1, h2, h3, h4, h5, h6 {
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        p, li {
+            animation: fadeInUp 0.5s ease-out both;
+        }
+
+        /* Stagger paragraphs a bit */
+        p:nth-of-type(1) { animation-delay: 0.1s; }
+        p:nth-of-type(2) { animation-delay: 0.2s; }
+        p:nth-of-type(3) { animation-delay: 0.3s; }
         </style>
       </template>
     </zero-md>

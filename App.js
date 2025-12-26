@@ -56,7 +56,9 @@ function App() {
     <div class="wrapper">
       <${Header} page="${page}" />
       <main class="flow" style="--flow-space: var(--space-2xl)">
-        ${content}
+        <div key="${page}" class="animate-slide-up">
+          ${content}
+        </div>
         <${Footer} />
       </main>
     </div>

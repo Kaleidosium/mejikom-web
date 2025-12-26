@@ -15,7 +15,7 @@ export function Footer() {
   return html`
     <footer class="footer text-center">
       <div class="footer__social cluster" style="--gutter: var(--space-lg)">
-        <a href="${SOCIALS.telegram}" class="social-link">
+        <a href="${SOCIALS.telegram}" class="social-link hover-wiggle">
           <img
             class="social-icon"
             aria-label="Telegram"
@@ -24,7 +24,7 @@ export function Footer() {
             src="https://cdn.simpleicons.org/telegram?viewbox=auto"
           />
         </a>
-        <a href="${SOCIALS.twitter}" class="social-link">
+        <a href="${SOCIALS.twitter}" class="social-link hover-wiggle">
           <img
             class="social-icon"
             aria-label="X (Twitter)"
@@ -33,7 +33,7 @@ export function Footer() {
             src="https://cdn.simpleicons.org/x?viewbox=auto"
           />
         </a>
-        <a href="${SOCIALS.instagram}" class="social-link">
+        <a href="${SOCIALS.instagram}" class="social-link hover-wiggle">
           <img
             class="social-icon"
             aria-label="Instagram"
@@ -44,7 +44,7 @@ export function Footer() {
         </a>
         <a
           href="#"
-          class="social-link"
+          class="social-link hover-wiggle"
           onClick="${handleDiscordClick}"
           title="${tooltip}"
         >
@@ -55,7 +55,7 @@ export function Footer() {
             src="https://cdn.simpleicons.org/discord?viewbox=auto"
           />
         </a>
-        <a href="${SOCIALS.kofi}" class="social-link">
+        <a href="${SOCIALS.kofi}" class="social-link hover-wiggle">
           <img
             class="social-icon"
             aria-label="Ko-fi"
