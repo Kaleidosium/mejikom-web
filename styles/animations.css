@@ -129,8 +129,7 @@
   .hover-lift {
     transform-origin: bottom right;
   }
-
   .hover-lift:hover {
-    transform: rotate(3deg);
+    transform: skewY(3deg);
   }
 }
