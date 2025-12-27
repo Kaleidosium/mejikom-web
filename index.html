@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" href="styles/styles.css" />
 
-    <script type="importmap">
+    <script type="importmap" async>
       {
         "imports": {
           "preact": "https://esm.sh/preact@10.28.1",
@@ -26,18 +26,31 @@
     <script
       type="module"
       src="https://cdn.jsdelivr.net/npm/zero-md@3?register"
+      async
     ></script>
   </head>
 
   <body>
     <div class="background" data-state="fixed" data-variant="web"></div>
     <div id="app"></div>
-    <script type="module" src="App.js"></script>
+    <script type="module" src="App.js" defer></script>
     <script
       src="./vendor/oneko.js/oneko.js"
       data-cat="./vendor/oneko.js/oneko.gif"
+      defer
     ></script>
-		<!--
+    <script defer>
+      console.log(
+        "This website was coded by Dania Rifki (Kaleidosium), you can view my website at https://kaleidosium.my.id",
+      );
+      console.log(
+        `%c `.repeat(5),
+        ...`5CFFABFFFFAB5CF`.match(/.../g).map((c) =>
+          `background:#${c};display:block;padding:2%26%`
+        ),
+      );
+    </script>
+    <!--
 		 This website was coded by Dania Rifki (Kaleidosium),
 		 you can view my website at https://kaleidosium.my.id
 		 -->
