@@ -8,7 +8,7 @@
 
 /* Header Block */
 .header {
-  padding-block-start: var(--space-2xl);
+  padding-block-start: clamp(var(--space-md), 5vh, var(--space-2xl));
   background-color: transparent;
   position: relative;
   z-index: 10;
@@ -93,7 +93,7 @@
 
 .hero__content {
   background-color: var(--color-bg);
-  padding: clamp(var(--space-sm), 3.5vw, var(--space-xl));
+  padding: clamp(var(--space-md), 3.5vw, var(--space-xl));
   box-shadow: 0 var(--space-xs) 0 var(--color-primary);
   inline-size: 100%;
 }
