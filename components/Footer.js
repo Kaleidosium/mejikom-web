@@ -48,7 +48,7 @@ export function Footer() {
           />
         </a>
         <a
-          href="#"
+          href="#discord-username"
           class="social-link hover-wiggle"
           onClick="${handleDiscordClick}"
           title="${tooltip}"
