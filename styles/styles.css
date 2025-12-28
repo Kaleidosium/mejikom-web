@@ -1,9 +1,12 @@
-@import "../vendor/modern-normalize.css";
-@import "reset.css";
-@import "variables.css";
-@import "global.css";
-@import "composition.css";
-@import "utilities.css";
-@import "animations.css";
-@import "blocks.css";
-@import "exceptions.css";
+@layer reset, base, composition, utilities, blocks, exceptions;
+
+@import "../vendor/modern-normalize.css" layer(reset);
+@import "reset.css" layer(reset);
+@import "variables.css" layer(base);
+@import "global.css" layer(base);
+@import "composition.css" layer(composition);
+@import "utilities.css" layer(utilities);
+@import "animations.css" layer(utilities);
+@import "blocks.css" layer(blocks);
+@import "exceptions.css" layer(exceptions);
+
