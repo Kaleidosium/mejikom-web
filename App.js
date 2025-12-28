@@ -2,10 +2,7 @@ import "preact/debug";
 
 import { html } from "htm/preact";
 import { render } from "preact";
-import {
-	useEffect,
-	useState,
-} from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 
 import { Footer } from "./components/Footer.js";
 import { Header } from "./components/Header.js";
@@ -33,8 +30,10 @@ function App() {
   // Update meta tags based on current page
   useEffect(() => {
     // Remove existing og tags
-    const existingOgTags = document.querySelectorAll('meta[property^="og:"], meta[name^="twitter:"]');
-    existingOgTags.forEach(tag => tag.remove());
+    const existingOgTags = document.querySelectorAll(
+      'meta[property^="og:"], meta[name^="twitter:"]',
+    );
+    existingOgTags.forEach((tag) => tag.remove());
 
     // Set default meta tags
     const defaultTitle = "Meji's Website!!";
@@ -47,7 +46,7 @@ function App() {
     let description = defaultDescription;
     let image = defaultImage;
 
-    switch(page) {
+    switch (page) {
       case "terms":
         title = "Terms of Service - Meji's Website!!";
         description = "Terms of Service for Meji's Commissions";
@@ -78,9 +77,12 @@ function App() {
       { property: "og:site_name", content: "Meji's Website" },
     ];
 
-    ogTags.forEach(tag => {
-      const meta = document.createElement('meta');
-      meta.setAttribute(tag.property.includes('og:') ? 'property' : 'name', tag.property);
+    ogTags.forEach((tag) => {
+      const meta = document.createElement("meta");
+      meta.setAttribute(
+        tag.property.includes("og:") ? "property" : "name",
+        tag.property,
+      );
       meta.content = tag.content;
       document.head.appendChild(meta);
     });
@@ -94,8 +96,8 @@ function App() {
       { name: "twitter:image:alt", content: title },
     ];
 
-    twitterTags.forEach(tag => {
-      const meta = document.createElement('meta');
+    twitterTags.forEach((tag) => {
+      const meta = document.createElement("meta");
       meta.name = tag.name;
       meta.content = tag.content;
       document.head.appendChild(meta);

@@ -49,8 +49,9 @@ You can also request this style without any shading/flat colored.
 
 An experimental BNW style with grayscale coloring and halftone technique.
 
-class="animate-pop-in" although the style is still experimental like i said, feel free to try choosing
-this style and become one of my experiment subject if you're interested!
+class="animate-pop-in" although the style is still experimental like i said,
+feel free to try choosing this style and become one of my experiment subject if
+you're interested!
 
 | size     | cost |
 | :------- | :--- |
