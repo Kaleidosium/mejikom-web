@@ -61,10 +61,10 @@
   background-color: var(--color-accent);
 }
 
-@media (width >= 1024px) {
+@media (width >= 1095px) {
   .nav__item[aria-current="page"] {
     padding-block: var(--space-sm);
-    padding-inline-start: var(--space-lg);
+    padding-inline-start: var(--space-md);
   }
 }
 

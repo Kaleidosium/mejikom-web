@@ -14,7 +14,7 @@
   z-index: 10;
 }
 
-@media (width >= 1024px) {
+@media (width >= 1095px) {
   .header {
     position: absolute;
     inset-inline-end: 100%;
@@ -35,7 +35,7 @@
   align-items: flex-end;
 }
 
-@media (width >= 1024px) {
+@media (width >= 1095px) {
   .header__nav {
     display: flex;
     flex-direction: column;
@@ -61,12 +61,12 @@
   text-align: center;
 }
 
-@media (width >= 1024px) {
+@media (width >= 1095px) {
   .nav__item {
     border-radius: 100pt 0 0 100pt;
     flex: none;
     padding-block: var(--space-sm);
-    padding-inline: var(--space-md) var(--space-sm);
+    padding-inline: var(--space-sm) var(--space-xs);
     min-inline-size: 0;
     text-align: right;
     width: max-content;
@@ -83,7 +83,7 @@
   z-index: 20;
 }
 
-@media (width >= 1024px) {
+@media (width >= 1095px) {
   .hero {
     align-items: flex-start;
     justify-content: flex-start;
@@ -98,7 +98,7 @@
   inline-size: 100%;
 }
 
-@media (width >= 1024px) {
+@media (width >= 768px) {
   .hero__content {
     box-shadow: var(--space-xs) var(--space-xs) 0 var(--color-primary);
     border-start-start-radius: 0;
@@ -217,9 +217,9 @@
 /* Image Grid Block */
 .image-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: var(--space-xs);
-  margin-block: var(--space-sm);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 12rem), 1fr));
+  gap: clamp(var(--space-xs), 2vw, var(--space-sm));
+  margin-block: clamp(var(--space-sm), 4vw, var(--space-md));
 }
 
 .image-grid img {

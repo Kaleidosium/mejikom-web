@@ -4,7 +4,7 @@
   min-height: 100vh;
 }
 
-@media (width >= 1024px) {
+@media (width >= 1095px) {
   #app {
     flex-direction: row;
     align-items: flex-start;
@@ -22,7 +22,7 @@
   position: relative;
 }
 
-@media (width >= 1024px) {
+@media (width >= 1095px) {
   .wrapper {
     display: block;
     position: relative;
