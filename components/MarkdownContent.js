@@ -22,7 +22,7 @@ export default function MarkdownContent({ src }) {
         hr {
         	margin: 1rem 0;
         	border: none;
-        	border-top: 1px solid #16161d;
+        	border-top: 1px solid var(--color-text);
         	overflow: visible;
         	text-align: center;
         	height: 5px;
