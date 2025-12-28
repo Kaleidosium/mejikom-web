@@ -43,6 +43,10 @@
   --font-size-2xl: 2rem;
 
   /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-base: 300ms ease;
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 700ms;
+  --transition-fast: var(--duration-fast) ease;
+  --transition-base: var(--duration-base) ease;
+  --transition-slow: var(--duration-slow) ease;
 }
