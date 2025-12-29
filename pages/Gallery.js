@@ -5,7 +5,7 @@ import { galleryImages } from "../content/gallery-list.js";
 
 export function Gallery() {
   return html`
-    <section class="hero d-flex flex-column items-center">
+    <section class="hero d-flex flex-column items-center relative z-20">
       <div class="hero__content flow">
         <${MarkdownContent} src="content/gallery.md" />
 
@@ -18,7 +18,7 @@ export function Gallery() {
                   alt="${image.alt}"
                   title="${image.alt}"
                   loading="lazy"
-                  class="gallery-item"
+                  class="gallery-item w-full h-full object-cover"
                 />
               </a>
             `

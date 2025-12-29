@@ -23,9 +23,9 @@ scenery.
 ## REGULAR STYLE
 
 <div class="image-grid" data-variant="square">
-  <img src="../assets/prices/70347682.jpg" class="animate-pop-in" alt="meji" title="meji" loading="lazy">
-  <img src="../assets/prices/a6abcee1.jpg" class="animate-pop-in" alt="mad mew mew" title="mad mew mew" loading="lazy">
-  <img src="../assets/prices/5c05e362.jpg" class="animate-pop-in" alt="glenmario" title="glenmario" loading="lazy">
+  <img src="../assets/prices/70347682.jpg" class="animate-pop-in w-full h-full object-cover" alt="meji" title="meji" loading="lazy">
+  <img src="../assets/prices/a6abcee1.jpg" class="animate-pop-in w-full h-full object-cover" alt="mad mew mew" title="mad mew mew" loading="lazy">
+  <img src="../assets/prices/5c05e362.jpg" class="animate-pop-in w-full h-full object-cover" alt="glenmario" title="glenmario" loading="lazy">
 </div>
 
 The classic Meji style you often see in my social media pages. Simple shaded and
@@ -42,9 +42,9 @@ You can also request this style without any shading/flat colored.
 ## SKETCHY
 
 <div class="image-grid" data-variant="square">
-  <img src="../assets/prices/729a6878.jpg" class="animate-pop-in" alt="meji" title="meji" loading="lazy">
-  <img src="../assets/prices/11cb56fc.jpg" class="animate-pop-in" alt="mad mew mew" title="mad mew mew" loading="lazy">
-  <img src="../assets/prices/e83f8add.jpg" class="animate-pop-in" alt="meji" title="meji" loading="lazy">
+  <img src="../assets/prices/729a6878.jpg" class="animate-pop-in w-full h-full object-cover" alt="meji" title="meji" loading="lazy">
+  <img src="../assets/prices/11cb56fc.jpg" class="animate-pop-in w-full h-full object-cover" alt="mad mew mew" title="mad mew mew" loading="lazy">
+  <img src="../assets/prices/e83f8add.jpg" class="animate-pop-in w-full h-full object-cover" alt="meji" title="meji" loading="lazy">
 </div>
 
 An experimental BNW style with grayscale coloring and halftone technique.
@@ -62,9 +62,9 @@ you're interested!
 ## CHIBI
 
 <div class="image-grid" data-variant="square">
-  <img src="../assets/prices/a653f923.png" class="animate-pop-in" alt="okarun" title="okarun" loading="lazy">
-  <img src="../assets/prices/1bbcac71.png" class="animate-pop-in" alt="meji cati" title="meji cati" loading="lazy">
-  <img src="../assets/prices/6a49638b.jpg" class="animate-pop-in" alt="fennekow" title="fennekow" loading="lazy">
+  <img src="../assets/prices/a653f923.png" class="animate-pop-in w-full h-full object-cover" alt="okarun" title="okarun" loading="lazy">
+  <img src="../assets/prices/1bbcac71.png" class="animate-pop-in w-full h-full object-cover" alt="meji cati" title="meji cati" loading="lazy">
+  <img src="../assets/prices/6a49638b.jpg" class="animate-pop-in w-full h-full object-cover" alt="fennekow" title="fennekow" loading="lazy">
 </div>
 
 Classic chibi style everyone knows, with simplified shading and thick lineart.
@@ -80,9 +80,9 @@ You can also request this style without any shading/flat colored.
 ## DOODLES
 
 <div class="image-grid" data-variant="square">
-  <img src="../assets/prices/80501245.jpg" class="animate-pop-in" alt="sukuna" title="sukuna" loading="lazy">
-  <img src="../assets/prices/3fd9c1d7.jpg" class="animate-pop-in" alt="belial" title="belial" loading="lazy">
-  <img src="../assets/prices/0bcdc9ab.jpg" class="animate-pop-in" alt="frankenprawn" title="frankenprawn" loading="lazy">
+  <img src="../assets/prices/80501245.jpg" class="animate-pop-in w-full h-full object-cover" alt="sukuna" title="sukuna" loading="lazy">
+  <img src="../assets/prices/3fd9c1d7.jpg" class="animate-pop-in w-full h-full object-cover" alt="belial" title="belial" loading="lazy">
+  <img src="../assets/prices/0bcdc9ab.jpg" class="animate-pop-in w-full h-full object-cover" alt="frankenprawn" title="frankenprawn" loading="lazy">
 </div>
 
 Random Doodle of your chosen character with various poses on one canvas!
