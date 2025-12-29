@@ -15,12 +15,15 @@ export function Footer() {
 	};
 
 	return html`
-		<footer class="footer text-center">
-			<div class="footer__social cluster" style="--gutter: var(--space-lg)">
+		<footer class="[ footer ] [ text-center ]">
+			<div
+				class="[ footer__social ] [ cluster ]"
+				style="--gutter: var(--space-lg)"
+			>
 				<a
 					href="${SOCIALS.telegram}"
 					target="_blank"
-					class="social-link d-flex items-center justify-center hover-wiggle"
+					class="[ social-link ] [ d-flex items-center justify-center ] [ hover-wiggle ]"
 				>
 					<img
 						class="social-icon"
@@ -33,7 +36,7 @@ export function Footer() {
 				<a
 					href="${SOCIALS.twitter}"
 					target="_blank"
-					class="social-link d-flex items-center justify-center hover-wiggle"
+					class="[ social-link ] [ d-flex items-center justify-center ] [ hover-wiggle ]"
 				>
 					<img
 						class="social-icon"
@@ -46,7 +49,7 @@ export function Footer() {
 				<a
 					href="${SOCIALS.instagram}"
 					target="_blank"
-					class="social-link d-flex items-center justify-center hover-wiggle"
+					class="[ social-link ] [ d-flex items-center justify-center ] [ hover-wiggle ]"
 				>
 					<img
 						class="social-icon"
@@ -58,7 +61,7 @@ export function Footer() {
 				</a>
 				<a
 					href="#discord-username"
-					class="social-link d-flex items-center justify-center hover-wiggle"
+					class="[ social-link ] [ d-flex items-center justify-center ] [ hover-wiggle ]"
 					onClick="${handleDiscordClick}"
 					title="${tooltip}"
 				>
@@ -72,7 +75,7 @@ export function Footer() {
 				<a
 					href="${SOCIALS.kofi}"
 					target="_blank"
-					class="social-link d-flex items-center justify-center hover-wiggle"
+					class="[ social-link ] [ d-flex items-center justify-center ] [ hover-wiggle ]"
 				>
 					<img
 						class="social-icon"

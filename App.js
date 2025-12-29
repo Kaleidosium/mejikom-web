@@ -122,10 +122,10 @@ function App() {
 	}
 
 	return html`
-		<div class="wrapper">
+		<div class="[ wrapper ]">
 			<${Header} page="${page}" />
-			<main class="flow" style="--flow-space: var(--space-2xl)">
-				<div key="${page}" class="animate-slide-up">${content}</div>
+			<main class="[ flow ]" style="--flow-space: var(--space-2xl)">
+				<div key="${page}" class="[ animate-slide-up ]">${content}</div>
 				<${Footer} />
 			</main>
 		</div>
