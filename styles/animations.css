@@ -1,135 +1,136 @@
 /* Keyframes */
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 @keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+	from {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 @keyframes popIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+	from {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
 }
 
 @keyframes wiggle {
-  0%, 100% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(-3deg);
-  }
-  75% {
-    transform: rotate(3deg);
-  }
+	0%,
+	100% {
+		transform: rotate(0deg);
+	}
+	25% {
+		transform: rotate(-3deg);
+	}
+	75% {
+		transform: rotate(3deg);
+	}
 }
 
 @keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.05);
+	}
+	100% {
+		transform: scale(1);
+	}
 }
 
 /* Utilities */
 
 .animate-fade-in {
-  animation: fadeIn var(--transition-base) both;
+	animation: fadeIn var(--transition-base) both;
 }
 
 .animate-slide-up {
-  animation: fadeInUp var(--duration-fast) ease-out both;
+	animation: fadeInUp var(--duration-fast) ease-out both;
 }
 
 .animate-pop-in {
-  animation: popIn var(--duration-slow) cubic-bezier(0.175, 0.885, 0.32, 1.275)
-    both;
+	animation: popIn var(--duration-slow) cubic-bezier(0.175, 0.885, 0.32, 1.275)
+		both;
 }
 
 /* Staggered delays for children (up to 12 items) */
 .stagger-children > *:nth-child(1) {
-  animation-delay: 50ms;
+	animation-delay: 50ms;
 }
 .stagger-children > *:nth-child(2) {
-  animation-delay: 100ms;
+	animation-delay: 100ms;
 }
 .stagger-children > *:nth-child(3) {
-  animation-delay: 150ms;
+	animation-delay: 150ms;
 }
 .stagger-children > *:nth-child(4) {
-  animation-delay: 200ms;
+	animation-delay: 200ms;
 }
 .stagger-children > *:nth-child(5) {
-  animation-delay: 250ms;
+	animation-delay: 250ms;
 }
 .stagger-children > *:nth-child(6) {
-  animation-delay: 300ms;
+	animation-delay: 300ms;
 }
 .stagger-children > *:nth-child(7) {
-  animation-delay: 350ms;
+	animation-delay: 350ms;
 }
 .stagger-children > *:nth-child(8) {
-  animation-delay: 400ms;
+	animation-delay: 400ms;
 }
 .stagger-children > *:nth-child(9) {
-  animation-delay: 450ms;
+	animation-delay: 450ms;
 }
 .stagger-children > *:nth-child(10) {
-  animation-delay: 500ms;
+	animation-delay: 500ms;
 }
 .stagger-children > *:nth-child(11) {
-  animation-delay: 550ms;
+	animation-delay: 550ms;
 }
 .stagger-children > *:nth-child(12) {
-  animation-delay: 600ms;
+	animation-delay: 600ms;
 }
 
 /* Interactive Elements */
 
 .hover-wiggle:hover {
-  animation: wiggle 0.4s ease-in-out;
+	animation: wiggle 0.4s ease-in-out;
 }
 
 @media (width >= 1095px) {
-  .hover-lift {
-    transform-origin: bottom right;
-  }
-  .hover-lift:hover {
-    transform: skewY(3deg);
-  }
+	.hover-lift {
+		transform-origin: bottom right;
+	}
+	.hover-lift:hover {
+		transform: skewY(3deg);
+	}
 }

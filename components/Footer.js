@@ -3,74 +3,86 @@ import { html } from "htm/preact";
 import { SOCIALS } from "../config.js";
 
 export function Footer() {
-  const tooltip = `Discord (@${SOCIALS.discordUsername})`;
+	const tooltip = `Discord (@${SOCIALS.discordUsername})`;
 
-  const handleDiscordClick = (e) => {
-    e.preventDefault();
-    navigator.clipboard.writeText(SOCIALS.discordUsername).then(() => {
-      alert(
-        `Discord username @${SOCIALS.discordUsername} copied to clipboard!`,
-      );
-    });
-  };
+	const handleDiscordClick = (e) => {
+		e.preventDefault();
+		navigator.clipboard.writeText(SOCIALS.discordUsername).then(() => {
+			alert(
+				`Discord username @${SOCIALS.discordUsername} copied to clipboard!`,
+			);
+		});
+	};
 
-  return html`
-    <footer class="footer text-center">
-      <div class="footer__social cluster" style="--gutter: var(--space-lg)">
-        <a href="${SOCIALS
-          .telegram}" target="_blank" class="social-link d-flex items-center justify-center hover-wiggle">
-          <img
-            class="social-icon"
-            aria-label="Telegram"
-            title="Telegram"
-            height="20"
-            src="https://cdn.simpleicons.org/telegram?viewbox=auto"
-          />
-        </a>
-        <a href="${SOCIALS
-          .twitter}" target="_blank" class="social-link d-flex items-center justify-center hover-wiggle">
-          <img
-            class="social-icon"
-            aria-label="X (Twitter)"
-            title="X (Twitter)"
-            height="20"
-            src="https://cdn.simpleicons.org/x?viewbox=auto"
-          />
-        </a>
-        <a href="${SOCIALS
-          .instagram}" target="_blank" class="social-link d-flex items-center justify-center hover-wiggle">
-          <img
-            class="social-icon"
-            aria-label="Instagram"
-            title="Instagram"
-            height="20"
-            src="https://cdn.simpleicons.org/instagram?viewbox=auto"
-          />
-        </a>
-        <a
-          href="#discord-username"
-          class="social-link d-flex items-center justify-center hover-wiggle"
-          onClick="${handleDiscordClick}"
-          title="${tooltip}"
-        >
-          <img
-            class="social-icon"
-            aria-label="Discord Username"
-            height="20"
-            src="https://cdn.simpleicons.org/discord?viewbox=auto"
-          />
-        </a>
-        <a href="${SOCIALS
-          .kofi}" target="_blank" class="social-link d-flex items-center justify-center hover-wiggle">
-          <img
-            class="social-icon"
-            aria-label="Ko-fi"
-            title="Ko-fi"
-            height="20"
-            src="https://cdn.simpleicons.org/kofi?viewbox=auto"
-          />
-        </a>
-      </div>
-    </footer>
-  `;
+	return html`
+		<footer class="footer text-center">
+			<div class="footer__social cluster" style="--gutter: var(--space-lg)">
+				<a
+					href="${SOCIALS.telegram}"
+					target="_blank"
+					class="social-link d-flex items-center justify-center hover-wiggle"
+				>
+					<img
+						class="social-icon"
+						aria-label="Telegram"
+						title="Telegram"
+						height="20"
+						src="https://cdn.simpleicons.org/telegram?viewbox=auto"
+					/>
+				</a>
+				<a
+					href="${SOCIALS.twitter}"
+					target="_blank"
+					class="social-link d-flex items-center justify-center hover-wiggle"
+				>
+					<img
+						class="social-icon"
+						aria-label="X (Twitter)"
+						title="X (Twitter)"
+						height="20"
+						src="https://cdn.simpleicons.org/x?viewbox=auto"
+					/>
+				</a>
+				<a
+					href="${SOCIALS.instagram}"
+					target="_blank"
+					class="social-link d-flex items-center justify-center hover-wiggle"
+				>
+					<img
+						class="social-icon"
+						aria-label="Instagram"
+						title="Instagram"
+						height="20"
+						src="https://cdn.simpleicons.org/instagram?viewbox=auto"
+					/>
+				</a>
+				<a
+					href="#discord-username"
+					class="social-link d-flex items-center justify-center hover-wiggle"
+					onClick="${handleDiscordClick}"
+					title="${tooltip}"
+				>
+					<img
+						class="social-icon"
+						aria-label="Discord Username"
+						height="20"
+						src="https://cdn.simpleicons.org/discord?viewbox=auto"
+					/>
+				</a>
+				<a
+					href="${SOCIALS.kofi}"
+					target="_blank"
+					class="social-link d-flex items-center justify-center hover-wiggle"
+				>
+					<img
+						class="social-icon"
+						aria-label="Ko-fi"
+						title="Ko-fi"
+						height="20"
+						src="https://cdn.simpleicons.org/kofi?viewbox=auto"
+					/>
+				</a>
+			</div>
+		</footer>
+	`;
 }

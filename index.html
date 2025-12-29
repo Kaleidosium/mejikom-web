@@ -1,62 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-US">
-  <head>
-    <title>Meji's Website!!</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<head>
+		<title>Meji's Website!!</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Outfit:wght@100..900&display=swap"
-      rel="stylesheet"
-    >
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Outfit:wght@100..900&display=swap"
+			rel="stylesheet"
+		/>
 
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="shortcut icon" href="/favicon.ico" />
 
-    <link rel="stylesheet" href="styles/styles.css" />
+		<link rel="stylesheet" href="styles/styles.css" />
 
-    <script type="importmap" async>
-      {
-        "imports": {
-          "preact": "https://esm.sh/preact@10.28.1",
-          "preact/": "https://esm.sh/preact@10.28.1/",
-          "htm/preact": "https://esm.sh/htm@3.1.1/preact?external=preact"
-        }
-      }
-    </script>
-    <script
-      type="module"
-      src="https://cdn.jsdelivr.net/npm/zero-md@3?register"
-      async
-    ></script>
-  </head>
+		<script type="importmap" async>
+			{
+				"imports": {
+					"preact": "https://esm.sh/preact@10.28.1",
+					"preact/": "https://esm.sh/preact@10.28.1/",
+					"htm/preact": "https://esm.sh/htm@3.1.1/preact?external=preact"
+				}
+			}
+		</script>
+		<script
+			type="module"
+			src="https://cdn.jsdelivr.net/npm/zero-md@3?register"
+			async
+		></script>
+	</head>
 
-  <body>
-    <div class="background m-0 p-0 h-screen w-full" data-state="fixed" data-variant="web"></div>
-    <div id="app"></div>
-    <script type="module" src="App.js" defer></script>
-    <script
-      src="./vendor/oneko.js/oneko.js"
-      data-cat="./vendor/oneko.js/oneko.gif"
-      defer
-    ></script>
-    <script defer>
-      console.log(
-        "This website was coded by Dania Rifki (Kaleidosium), you can view my website at https://kaleidosium.my.id",
-      );
-      console.log(
-        `%c `.repeat(5),
-        ...`5CFFABFFFFAB5CF`.match(/.../g).map((c) =>
-          `background:#${c};display:block;padding:2%26%`
-        ),
-      );
-    </script>
-    <!--
+	<body>
+		<div
+			class="background m-0 p-0 h-screen w-full"
+			data-state="fixed"
+			data-variant="web"
+		></div>
+		<div id="app"></div>
+		<script type="module" src="App.js" defer></script>
+		<script
+			src="./vendor/oneko.js/oneko.js"
+			data-cat="./vendor/oneko.js/oneko.gif"
+			defer
+		></script>
+		<script defer>
+			console.log(
+				"This website was coded by Dania Rifki (Kaleidosium), you can view my website at https://kaleidosium.my.id",
+			);
+			console.log(
+				`%c `.repeat(5),
+				...`5CFFABFFFFAB5CF`
+					.match(/.../g)
+					.map((c) => `background:#${c};display:block;padding:2%26%`),
+			);
+		</script>
+		<!--
 		 This website was coded by Dania Rifki (Kaleidosium),
 		 you can view my website at https://kaleidosium.my.id
 		 -->
-  </body>
+	</body>
 </html>

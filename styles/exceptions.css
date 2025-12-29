@@ -1,73 +1,73 @@
 .btn[data-variant="primary"] {
-  background-color: var(--color-primary);
-  color: var(--color-bg);
+	background-color: var(--color-primary);
+	color: var(--color-bg);
 }
 
 .btn[data-variant="primary"]:hover {
-  background-color: var(--color-primary-dark);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+	background-color: var(--color-primary-dark);
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-md);
 }
 
 .btn[data-variant="secondary"] {
-  background-color: transparent;
-  color: var(--color-secondary);
-  border: 2px solid var(--color-secondary);
+	background-color: transparent;
+	color: var(--color-secondary);
+	border: 2px solid var(--color-secondary);
 }
 
 .btn[data-variant="secondary"]:hover {
-  background-color: var(--color-secondary-light);
-  transform: translateY(-2px);
+	background-color: var(--color-secondary-light);
+	transform: translateY(-2px);
 }
 
 .image-grid[data-variant="square"] img {
-  aspect-ratio: 1 / 1;
+	aspect-ratio: 1 / 1;
 }
 
 .image-grid[data-variant="landscape"] img {
-  aspect-ratio: 4 / 3;
+	aspect-ratio: 4 / 3;
 }
 
 .image-grid[data-variant="portrait"] img {
-  aspect-ratio: 3 / 4;
+	aspect-ratio: 3 / 4;
 }
 
 .background[data-state~="fixed"] {
-  position: fixed;
-  inset-block-start: 0;
-  inset-inline-start: 0;
-  z-index: -1;
+	position: fixed;
+	inset-block-start: 0;
+	inset-inline-start: 0;
+	z-index: -1;
 }
 
 .background[data-variant="web"] {
-  pointer-events: none;
-  background: url("../assets/139.png") repeat;
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
+	pointer-events: none;
+	background: url("../assets/139.png") repeat;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
 }
 
 .nav__item:hover:not([aria-current="page"]) {
-  background-color: var(--color-primary-light);
-  color: var(--color-text);
+	background-color: var(--color-primary-light);
+	color: var(--color-text);
 }
 
 .nav__item:hover:is([aria-current="page"]) {
-  cursor: default;
+	cursor: default;
 }
 
 .nav__item[aria-current="page"] {
-  color: var(--color-bg);
-  font-weight: 700;
-  background-color: var(--color-accent);
+	color: var(--color-bg);
+	font-weight: 700;
+	background-color: var(--color-accent);
 }
 
 @media (width >= 1095px) {
-  .nav__item[aria-current="page"] {
-    padding-block: var(--space-sm);
-    padding-inline-start: var(--space-md);
-  }
+	.nav__item[aria-current="page"] {
+		padding-block: var(--space-sm);
+		padding-inline-start: var(--space-md);
+	}
 }
 
 .hover-lift:hover[aria-current="page"] {
-  transform: none;
+	transform: none;
 }
