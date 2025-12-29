@@ -34,12 +34,18 @@
 .bg-accent {
 	background-color: var(--color-accent);
 }
+.bg-default {
+	background-color: var(--color-bg);
+}
 
 .text-primary {
 	color: var(--color-primary);
 }
 .text-light {
 	color: var(--color-text-light);
+}
+.text-default {
+	color: var(--color-text);
 }
 
 /* Spacing Overrides */
@@ -153,4 +159,8 @@
 
 .ff-heading {
 	font-family: var(--font-heading);
+}
+
+.ff-body {
+	font-family: var(--font-body);
 }
