@@ -37,13 +37,6 @@
 	align-items: var(--cluster-align, center);
 }
 
-.center {
-	box-sizing: content-box;
-	margin-inline: auto;
-	max-inline-size: var(--center-max, 65ch);
-	padding-inline: var(--center-padding, var(--space-md));
-}
-
 .flow > * + * {
 	margin-top: var(--flow-space, 1em);
 }
