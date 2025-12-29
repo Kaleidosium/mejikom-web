@@ -67,7 +67,7 @@ export default function MarkdownContent({ src }) {
           animation: fadeInDown 0.8s ease-out;
         }
 
-        p, li {
+        p, li, blockquote, hr, pre, code, table{
           animation: fadeInUp 0.5s ease-out both;
         }
 
@@ -75,6 +75,8 @@ export default function MarkdownContent({ src }) {
         p:nth-of-type(1) { animation-delay: 0.1s; }
         p:nth-of-type(2) { animation-delay: 0.2s; }
         p:nth-of-type(3) { animation-delay: 0.3s; }
+        p:nth-of-type(4) { animation-delay: 0.4s; }
+				p:nth-of-type(5) { animation-delay: 0.5s; }
         </style>
       </template>
     </zero-md>
