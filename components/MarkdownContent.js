@@ -77,6 +77,7 @@ export default function MarkdownContent({ src }) {
         p:nth-of-type(3) { animation-delay: 0.3s; }
         p:nth-of-type(4) { animation-delay: 0.4s; }
 				p:nth-of-type(5) { animation-delay: 0.5s; }
+				p:nth-of-type(6) { animation-delay: 0.6s; }
         </style>
       </template>
     </zero-md>
