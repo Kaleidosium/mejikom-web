@@ -29,10 +29,7 @@
 }
 
 .header__nav {
-  display: flex;
   justify-content: stretch;
-  flex-wrap: wrap;
-  align-items: flex-end;
 }
 
 @media (width >= 1095px) {

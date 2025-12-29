@@ -5,7 +5,7 @@ import { galleryImages } from "../content/gallery-list.js";
 
 export function Gallery() {
   return html`
-    <section class="hero">
+    <section class="hero d-flex flex-column items-center">
       <div class="hero__content flow">
         <${MarkdownContent} src="content/gallery.md" />
 

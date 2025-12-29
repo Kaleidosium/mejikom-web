@@ -4,7 +4,7 @@ import MarkdownContent from "../components/MarkdownContent.js";
 
 export function Home() {
   return html`
-    <section class="hero">
+    <section class="hero d-flex flex-column items-center">
       <div class="hero__content flow">
         <${MarkdownContent} src="content/home.md" />
       </div>
