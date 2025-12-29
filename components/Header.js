@@ -2,7 +2,7 @@ import { html } from "htm/preact";
 
 export function Header({ page }) {
 	return html`
-		<header class="[ header ]">
+		<header class="header">
 			<nav class="[ header__nav ] [ d-flex flex-wrap items-end ]">
 				<a
 					href="#home"

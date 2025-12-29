@@ -17,7 +17,7 @@ export function Gallery() {
 				>
 					${galleryImages.map(
 						(image) => html`
-							<a href="${image.src}" target="_blank" class="[ animate-pop-in ]">
+							<a href="${image.src}" target="_blank" class="animate-pop-in">
 								<img
 									src="${image.src}"
 									alt="${image.alt}"
