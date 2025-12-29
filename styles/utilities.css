@@ -47,6 +47,9 @@
 .text-default {
 	color: var(--color-text);
 }
+.text-color-bg {
+	color: var(--color-bg);
+}
 
 /* Spacing Overrides */
 .m-0 {
@@ -54,6 +57,9 @@
 }
 .p-0 {
 	padding: 0;
+}
+.p-md {
+	padding: var(--space-md);
 }
 
 /* Layout & Display */
@@ -100,6 +106,14 @@
 
 .absolute {
 	position: absolute;
+}
+
+.top-0 {
+	top: 0;
+}
+
+.left-0 {
+	left: 0;
 }
 
 .z-10 {
