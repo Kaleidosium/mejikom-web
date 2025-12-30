@@ -1,6 +1,6 @@
 # MEJI'S WEBSITE!!
 
-<img src="../assets/image01.png" class="animate-pop-in" width="250" style="margin: auto" alt="Meji in action pose, text reads 'Commission Information'">
+<img src="assets/image01.png" class="animate-pop-in" width="250" style="margin: auto" alt="Meji in action pose, text reads 'Commission Information'">
 
 ---
 
