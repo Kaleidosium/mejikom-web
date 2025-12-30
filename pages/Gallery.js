@@ -21,7 +21,6 @@ export function Gallery() {
 								<img
 									src="${image.src}"
 									alt="${image.alt}"
-									title="${image.alt}"
 									loading="lazy"
 									class="[ gallery-item ] [ w-full h-full object-cover ]"
 								/>
