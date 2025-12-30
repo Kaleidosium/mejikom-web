@@ -9,8 +9,8 @@ export default function MarkdownContent({ src }) {
 	return html`
 		<zero-md src="${src}">
 			<template>
-				<link rel="stylesheet" href="../styles/styles.css" />
-				<link rel="stylesheet" href="../styles/markdown.css" />
+				<link rel="stylesheet" href="styles/styles.css" />
+				<link rel="stylesheet" href="styles/markdown.css" />
 			</template>
 		</zero-md>
 	`;
