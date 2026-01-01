@@ -101,11 +101,8 @@ a {
 }
 
 a:hover {
-	color: var(--color-accent-light);
-}
-
-a:visited {
-	color: var(--color-accent-dark);
+	color: var(--color-bg);
+	background-color: var(--color-accent);
 }
 
 h1,
