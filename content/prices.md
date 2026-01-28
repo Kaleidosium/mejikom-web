@@ -97,3 +97,17 @@ up and decorate the canvas.
 | :----------------- | :--------------- |
 | 2-5 doodles        | $100             |
 | 6+ doodles         | +1 doodle = +$25 |
+
+## MYSTERY BOX/CREATIVE FREEDOM
+
+<div class="image-grid" data-variant="square">
+  <img src="assets/prices/mystery-box.webp" class="[ w-full h-full object-cover ] [ animate-pop-in ]" alt="Light blue mystery box with question marks on visible sides" title="mystery box" loading="lazy">
+  <img src="assets/prices/mystery-box.webp" class="[ w-full h-full object-cover ] [ animate-pop-in ]" alt="Light blue mystery box with question marks on visible sides" title="mystery box" loading="lazy">
+  <img src="assets/prices/mystery-box.webp" class="[ w-full h-full object-cover ] [ animate-pop-in ]" alt="Light blue mystery box with question marks on visible sides" title="mystery box" loading="lazy">
+</div>
+
+Send your character reference and give me the creative freedom and full control to draw your character into anything, either you'll get a headshot, halfbody, fullbody, or even a fully anime style scenario! Test your luck if you're interested!
+
+| type        | cost |
+| :---------- | :--- |
+| mystery box | $30  |

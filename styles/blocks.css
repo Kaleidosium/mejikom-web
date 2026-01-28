@@ -113,3 +113,8 @@
 	gap: clamp(var(--space-xs), 2vw, var(--space-sm));
 	margin-block: clamp(var(--space-sm), 4vw, var(--space-md));
 }
+
+/* Single Image Block */
+.image-single {
+	margin-block: clamp(var(--space-sm), 4vw, var(--space-md));
+}
