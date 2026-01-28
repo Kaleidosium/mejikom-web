@@ -110,4 +110,4 @@ Send your character reference and give me the creative freedom and full control 
 
 | type        | cost |
 | :---------- | :--- |
-| mystery box | $30  |
+| mystery box | $50  |
