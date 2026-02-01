@@ -127,5 +127,5 @@ table {
 /* Stagger paragraphs a bit */
 p {
   /* NOTE: sibling-index() returns an integer starting at 1 */
-  animation-delay: calc(sibling-index() * 0.1s);
+  animation-delay: calc(sibling-index() * 0.05s);
 }
