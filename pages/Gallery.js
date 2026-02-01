@@ -12,8 +12,7 @@ export function Gallery() {
 				<${MarkdownContent} src="content/gallery.md" />
 
 				<div
-					class="[ image-grid ] [ stagger-children ]"
-					data-variant="portrait"
+					class="[ image-grid-lanes ] [ stagger-children ]"
 				>
 					${galleryImages.map(
 						(image) => html`
@@ -22,7 +21,7 @@ export function Gallery() {
 									src="${image.src}"
 									alt="${image.alt}"
 									loading="lazy"
-									class="[ gallery-item ] [ w-full h-full object-cover ]"
+									class="[ gallery-item ] [ w-full h-full object-contain ]"
 								/>
 							</a>
 						`,

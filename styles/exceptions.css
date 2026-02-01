@@ -2,14 +2,6 @@
 	aspect-ratio: 1 / 1;
 }
 
-.image-grid[data-variant="landscape"] img {
-	aspect-ratio: 4 / 3;
-}
-
-.image-grid[data-variant="portrait"] img {
-	aspect-ratio: 3 / 4;
-}
-
 .background[data-state~="fixed"] {
 	position: fixed;
 	inset-block-start: 0;
