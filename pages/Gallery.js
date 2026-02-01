@@ -1,6 +1,7 @@
 import { html } from "htm/preact";
 
 import MarkdownContent from "../components/MarkdownContent.js";
+import { GridLanesContainer } from "../components/GridLanesContainer.js";
 import { galleryImages } from "../content/gallery-list.js";
 
 export function Gallery() {
@@ -11,7 +12,7 @@ export function Gallery() {
 			<div class="[ hero__content ] [ flow ]">
 				<${MarkdownContent} src="content/gallery.md" />
 
-				<div
+				<${GridLanesContainer}
 					class="[ image-grid-lanes ] [ stagger-children ]"
 				>
 					${galleryImages.map(
@@ -26,7 +27,7 @@ export function Gallery() {
 							</a>
 						`,
 					)}
-				</div>
+				</${GridLanesContainer}>
 			</div>
 		</section>
 	`;
