@@ -13,7 +13,7 @@ export const galleryImages = [
 	},
 	{
 		src: "assets/gallery/Tak_berjudul849_20260114044051.jpg",
-		alt: "Pink and white anthropomorphic fox character with bow accessory shown in multiple cheerful expressions and poses, including one holding coffee cup, with \"awkward..\" and \"hi.\" speech bubbles.",
+		alt: 'Pink and white anthropomorphic fox character with bow accessory shown in multiple cheerful expressions and poses, including one holding coffee cup, with "awkward.." and "hi." speech bubbles.',
 	},
 	{
 		src: "assets/gallery/Tak_berjudul865_20260124043025.jpg",

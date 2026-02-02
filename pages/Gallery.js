@@ -11,9 +11,7 @@ export function Gallery() {
 			<div class="[ hero__content ] [ flow ]">
 				<${MarkdownContent} src="content/gallery.md" />
 
-				<div
-					class="[ image-grid-lanes ] [ stagger-children ]"
-				>
+				<div class="[ image-grid-lanes ] [ stagger-children ]">
 					${galleryImages.map(
 						(image) => html`
 							<a href="${image.src}" target="_blank" class="animate-pop-in">

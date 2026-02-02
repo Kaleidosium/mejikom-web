@@ -84,7 +84,7 @@
 
 /* Staggered delays for children */
 .stagger-children > * {
-  animation-delay: calc(sibling-index() * 50ms);
+	animation-delay: calc(sibling-index() * 50ms);
 }
 
 /* Interactive Elements */
