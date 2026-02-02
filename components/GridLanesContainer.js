@@ -48,7 +48,6 @@ export function GridLanesContainer({ children, style, ...props }) {
 				"grid-template-columns":
 					"repeat(auto-fill, minmax(min(100%, 12rem), 1fr))",
 				gap: "clamp(var(--space-xs), 2vw, var(--space-sm))",
-				"margin-block": "clamp(var(--space-sm), 4vw, var(--space-md))",
 				...style,
 			}}
 			...${props}
