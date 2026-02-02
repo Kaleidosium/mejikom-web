@@ -803,6 +803,10 @@
 			this.isVertical = true; // true = waterfall (columns), false = brick (rows)
 			this.lanes = [];
 			this.laneHeights = [];
+			this.autoPlacementCursor = 0; // Per CSS Grid Level 3 spec section 4.4
+			this.laneAssignments = new WeakMap(); // Stores lane index for each element
+			this.needsPlacement = true; // Whether items need lane assignment
+			this.lastLaneCount = 0; // Track lane count changes for re-placement
 			this.resizeObserver = null;
 			this.mutationObserver = null;
 
@@ -834,11 +838,11 @@
 
 			// Resize observer for responsive layouts AND child size changes
 			this.resizeObserver = new ResizeObserver((entries) => {
-				// Check if it's the container or a child that resized
+				// Check if it's the container, a direct child, or a nested element (e.g., img)
 				for (const entry of entries) {
 					if (
 						entry.target === this.container ||
-						entry.target.parentElement === this.container
+						this.container.contains(entry.target)
 					) {
 						debouncedLayout();
 						break;
@@ -851,6 +855,10 @@
 			for (const child of this.container.children) {
 				if (child.nodeType === Node.ELEMENT_NODE) {
 					this.resizeObserver.observe(child);
+					// Also observe nested images (e.g., img inside <a> wrappers)
+					for (const img of child.querySelectorAll("img")) {
+						this.resizeObserver.observe(img);
+					}
 				}
 			}
 
@@ -868,6 +876,7 @@
 							}
 						}
 						shouldRelayout = true;
+						this.needsPlacement = true; // New children need lane assignment
 					} else if (
 						mutation.type === "attributes" &&
 						mutation.attributeName === "style"
@@ -893,9 +902,14 @@
 		observeImages(root) {
 			const images = root.querySelectorAll("img");
 			for (const img of images) {
+				// Handle images that haven't loaded yet
 				if (!img.complete) {
 					img.addEventListener("load", () => this.layout(), { once: true });
 					img.addEventListener("error", () => this.layout(), { once: true });
+				} else if (img.naturalWidth === 0) {
+					// Handle cached images that report complete=true but have no dimensions yet
+					// This can happen with browser caching where complete is true before layout
+					img.addEventListener("load", () => this.layout(), { once: true });
 				}
 			}
 		}
@@ -938,12 +952,29 @@
 			// Initialize lane positions (heights for vertical, widths for horizontal)
 			this.laneHeights = new Array(this.lanes.length).fill(0);
 
+			// Check if lane count changed - requires re-placement
+			if (this.lanes.length !== this.lastLaneCount) {
+				this.needsPlacement = true;
+				this.lastLaneCount = this.lanes.length;
+			}
+
+			// Reset auto-placement cursor per spec section 4.4
+			this.autoPlacementCursor = 0;
+
 			// Get all direct children
 			const items = Array.from(this.container.children).filter(
 				(el) =>
 					el.nodeType === Node.ELEMENT_NODE &&
 					window.getComputedStyle(el).display !== "none",
 			);
+
+			// Check if any items are missing lane assignments
+			const hasMissingAssignments = items.some(
+				(item) => !this.laneAssignments.has(item),
+			);
+			if (hasMissingAssignments) {
+				this.needsPlacement = true;
+			}
 
 			// Separate explicitly placed items from auto-placed items
 			const explicitItems = [];
@@ -960,14 +991,29 @@
 				}
 			}
 
-			// Place explicitly positioned items first
-			for (const { element, styles: itemStyles } of explicitItems) {
-				this.placeExplicitItem(element, itemStyles, styles);
+			// Phase 1: Assign lanes (only if needed)
+			if (this.needsPlacement) {
+				// Place explicitly positioned items first
+				for (const { element, styles: itemStyles } of explicitItems) {
+					this.assignExplicitLane(element, itemStyles);
+				}
+
+				// Place auto-positioned items
+				for (const { element, styles: itemStyles } of autoItems) {
+					this.assignAutoLane(element, itemStyles, styles);
+				}
+
+				this.needsPlacement = false;
 			}
 
-			// Place auto-positioned items
-			for (const { element, styles: itemStyles } of autoItems) {
-				this.placeAutoItem(element, itemStyles, styles);
+			// Phase 2: Position all items using their assigned lanes
+			// Reset lane heights for positioning phase
+			this.laneHeights = new Array(this.lanes.length).fill(0);
+
+			// Position items in DOM order (maintaining stacking order)
+			for (const item of items) {
+				const itemStyles = getItemStyles(item);
+				this.positionItem(item, itemStyles, styles);
 			}
 
 			// Set container height
@@ -975,17 +1021,14 @@
 			this.container.style.minHeight = `${containerHeight}px`;
 		}
 
-		placeExplicitItem(element, itemStyles, containerStyles) {
-			const gap =
-				this.isVertical ? containerStyles.columnGap : containerStyles.rowGap;
-			const crossGap =
-				this.isVertical ? containerStyles.rowGap : containerStyles.columnGap;
-
+		/**
+		 * Phase 1: Assign explicit lane for items with definite grid positions
+		 */
+		assignExplicitLane(element, itemStyles) {
 			let laneIndex;
 			let span;
 
 			if (this.isVertical) {
-				// Handle negative indices
 				laneIndex = itemStyles.columnStart;
 				if (laneIndex < 0) {
 					laneIndex = this.lanes.length + laneIndex + 1;
@@ -1001,13 +1044,73 @@
 				span = itemStyles.rowSpan;
 			}
 
-			// Calculate position
+			// Store the lane assignment
+			this.laneAssignments.set(element, { lane: laneIndex, span });
+		}
+
+		/**
+		 * Phase 1: Assign lane for auto-placed items using cursor algorithm
+		 */
+		assignAutoLane(element, itemStyles, containerStyles) {
+			const tolerance = containerStyles.tolerance;
+			const span = this.isVertical ? itemStyles.columnSpan : itemStyles.rowSpan;
+
+			// Per CSS Grid Level 3 spec section 4.4:
+			// Use 0 for all lane heights during placement phase
+			// This ensures consistent round-robin placement regardless of actual item sizes
+			const laneMaxHeights = [];
+
+			for (let i = 0; i <= this.lanes.length - span; i++) {
+				// During placement, all lanes are "empty" (height 0)
+				laneMaxHeights.push({ lane: i, height: 0 });
+			}
+
+			// All lanes are tied at 0, use cursor to pick next lane
+			let bestLane = laneMaxHeights[0].lane;
+
+			for (const { lane } of laneMaxHeights) {
+				if (lane >= this.autoPlacementCursor) {
+					bestLane = lane;
+					break;
+				}
+			}
+
+			// Update cursor to item's last line (end of span)
+			this.autoPlacementCursor = bestLane + span;
+
+			// Wrap cursor if it exceeds lane count
+			if (this.autoPlacementCursor >= this.lanes.length) {
+				this.autoPlacementCursor = 0;
+			}
+
+			// Store the lane assignment
+			this.laneAssignments.set(element, { lane: bestLane, span });
+		}
+
+		/**
+		 * Phase 2: Position an item using its stored lane assignment
+		 */
+		positionItem(element, itemStyles, containerStyles) {
+			const assignment = this.laneAssignments.get(element);
+			if (!assignment) {
+				// Fallback: should not happen, but place in first lane
+				this.laneAssignments.set(element, { lane: 0, span: 1 });
+				return this.positionItem(element, itemStyles, containerStyles);
+			}
+
+			const { lane: laneIndex, span } = assignment;
+			const gap =
+				this.isVertical ? containerStyles.columnGap : containerStyles.rowGap;
+			const crossGap =
+				this.isVertical ? containerStyles.rowGap : containerStyles.columnGap;
+
+			// Calculate horizontal/vertical position based on lane
 			let position = 0;
 			for (let i = 0; i < laneIndex; i++) {
 				position += this.lanes[i] + gap;
 			}
 
-			// Calculate width (for spanning)
+			// Calculate size (for spanning)
 			let size = 0;
 			const endLane = Math.min(laneIndex + span, this.lanes.length);
 			for (let i = laneIndex; i < endLane; i++) {
@@ -1015,7 +1118,7 @@
 				if (i < endLane - 1) size += gap;
 			}
 
-			// Get the tallest lane in the span
+			// Get the max height across the spanned lanes
 			let maxHeight = 0;
 			for (let i = laneIndex; i < endLane; i++) {
 				maxHeight = Math.max(maxHeight, this.laneHeights[i]);
@@ -1036,84 +1139,12 @@
 				element.style.width = "";
 			}
 
-			// Update lane heights
+			// Update lane heights based on actual item size
 			const itemRect = element.getBoundingClientRect();
 			const itemSize = this.isVertical ? itemRect.height : itemRect.width;
 			const newHeight = maxHeight + (maxHeight > 0 ? crossGap : 0) + itemSize;
 
 			for (let i = laneIndex; i < endLane; i++) {
-				this.laneHeights[i] = newHeight;
-			}
-		}
-
-		placeAutoItem(element, itemStyles, containerStyles) {
-			const gap =
-				this.isVertical ? containerStyles.columnGap : containerStyles.rowGap;
-			const crossGap =
-				this.isVertical ? containerStyles.rowGap : containerStyles.columnGap;
-			const tolerance = containerStyles.tolerance;
-			const span = this.isVertical ? itemStyles.columnSpan : itemStyles.rowSpan;
-
-			// Find the best lane(s) considering tolerance
-			let bestLane = 0;
-			let bestHeight = Infinity;
-
-			for (let i = 0; i <= this.lanes.length - span; i++) {
-				// Get the max height across the span
-				let maxHeight = 0;
-				for (let j = i; j < i + span; j++) {
-					maxHeight = Math.max(maxHeight, this.laneHeights[j]);
-				}
-
-				// Use tolerance to determine if this is meaningfully better
-				if (bestHeight - maxHeight > tolerance) {
-					bestHeight = maxHeight;
-					bestLane = i;
-				} else if (
-					Math.abs(maxHeight - bestHeight) <= tolerance &&
-					i < bestLane
-				) {
-					// Within tolerance, prefer earlier lane for reading order
-					bestHeight = maxHeight;
-					bestLane = i;
-				}
-			}
-
-			// Calculate position
-			let position = 0;
-			for (let i = 0; i < bestLane; i++) {
-				position += this.lanes[i] + gap;
-			}
-
-			// Calculate size (for spanning)
-			let size = 0;
-			const endLane = Math.min(bestLane + span, this.lanes.length);
-			for (let i = bestLane; i < endLane; i++) {
-				size += this.lanes[i];
-				if (i < endLane - 1) size += gap;
-			}
-
-			// Position the element
-			element.style.position = "absolute";
-
-			if (this.isVertical) {
-				element.style.left = `${position}px`;
-				element.style.top = `${bestHeight > 0 ? bestHeight + crossGap : 0}px`;
-				element.style.width = `${size}px`;
-				element.style.height = "";
-			} else {
-				element.style.top = `${position}px`;
-				element.style.left = `${bestHeight > 0 ? bestHeight + crossGap : 0}px`;
-				element.style.height = `${size}px`;
-				element.style.width = "";
-			}
-
-			// Update lane heights
-			const itemRect = element.getBoundingClientRect();
-			const itemSize = this.isVertical ? itemRect.height : itemRect.width;
-			const newHeight = bestHeight + (bestHeight > 0 ? crossGap : 0) + itemSize;
-
-			for (let i = bestLane; i < endLane; i++) {
 				this.laneHeights[i] = newHeight;
 			}
 		}
@@ -1141,6 +1172,10 @@
 					item.style.height = "";
 				}
 			}
+
+			// Clear lane assignments
+			this.laneAssignments = new WeakMap();
+			this.needsPlacement = true;
 		}
 
 		refresh() {
