@@ -14,9 +14,13 @@
  * - Explicit placement (grid-column: N / M)
  * - Responsive auto-fill/auto-fit with minmax()
  * - Both waterfall (columns) and brick (rows) layouts
+ * - CSS math functions: min(), max(), clamp(), calc()
+ *   (supports nested functions and arithmetic operations)
  *
- * Features that do not work:
- * - fr units with grid-template-rows
+ * Limitations:
+ * - fr units with grid-template-rows in "brick" (horizontal) layouts
+ *   (fr units require a known container size, but brick layout containers
+ *   typically have auto height. Use fixed row heights like 100px instead.)
  *
  *
  * Usage:
@@ -41,9 +45,10 @@
  *
  *
  *
- * @version 1.1.0
+ * @version 1.2.0
  * @author Simon Willison
  * @author ninjamar
+ * @author kaleidosium
  * @license MIT
  */
 
@@ -68,6 +73,263 @@
 	}
 
 	/**
+	 * Extract content from a function call with balanced parentheses.
+	 * Returns the arguments as an array, properly handling nested functions.
+	 */
+	function extractFunctionArgs(value, funcName) {
+		const prefix = funcName + "(";
+		if (!value.startsWith(prefix)) return null;
+
+		let depth = 0;
+		let start = prefix.length;
+		const args = [];
+		let current = "";
+
+		for (let i = prefix.length; i < value.length; i++) {
+			const char = value[i];
+
+			if (char === "(") {
+				depth++;
+				current += char;
+			} else if (char === ")") {
+				if (depth === 0) {
+					// End of the function
+					if (current.trim()) args.push(current.trim());
+					return args;
+				}
+				depth--;
+				current += char;
+			} else if (char === "," && depth === 0) {
+				args.push(current.trim());
+				current = "";
+			} else {
+				current += char;
+			}
+		}
+
+		return null; // Unbalanced parentheses
+	}
+
+	/**
+	 * Parse CSS math functions: min(), max(), clamp(), calc()
+	 */
+	function parseCssMathFunction(
+		value,
+		containerSize,
+		fontSize = 16,
+		rootFontSize = 16,
+	) {
+		value = value.trim();
+
+		// Handle min()
+		if (value.startsWith("min(")) {
+			const args = extractFunctionArgs(value, "min");
+			if (!args || args.length === 0) return null;
+
+			const values = args.map((arg) =>
+				parseLengthToPixels(arg, containerSize, fontSize, rootFontSize),
+			);
+			if (values.some((v) => v === null)) return null;
+			return Math.min(...values);
+		}
+
+		// Handle max()
+		if (value.startsWith("max(")) {
+			const args = extractFunctionArgs(value, "max");
+			if (!args || args.length === 0) return null;
+
+			const values = args.map((arg) =>
+				parseLengthToPixels(arg, containerSize, fontSize, rootFontSize),
+			);
+			if (values.some((v) => v === null)) return null;
+			return Math.max(...values);
+		}
+
+		// Handle clamp(min, preferred, max)
+		if (value.startsWith("clamp(")) {
+			const args = extractFunctionArgs(value, "clamp");
+			if (!args || args.length !== 3) return null;
+
+			const [minVal, prefVal, maxVal] = args.map((arg) =>
+				parseLengthToPixels(arg, containerSize, fontSize, rootFontSize),
+			);
+			if (minVal === null || prefVal === null || maxVal === null) return null;
+			return Math.max(minVal, Math.min(prefVal, maxVal));
+		}
+
+		// Handle calc()
+		if (value.startsWith("calc(")) {
+			const args = extractFunctionArgs(value, "calc");
+			if (!args || args.length !== 1) return null;
+
+			return parseCalcExpression(
+				args[0],
+				containerSize,
+				fontSize,
+				rootFontSize,
+			);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Parse and evaluate a calc() expression.
+	 * Supports +, -, *, / with proper operator precedence.
+	 */
+	function parseCalcExpression(expr, containerSize, fontSize, rootFontSize) {
+		expr = expr.trim();
+
+		// Tokenize the expression
+		const tokens = tokenizeCalcExpression(expr);
+		if (!tokens || tokens.length === 0) return null;
+
+		// Parse with proper precedence: first pass for * and /, second for + and -
+		const resolved = tokens.map((token) => {
+			if (token.type === "operator") {
+				return token;
+			}
+			// It's a value - resolve it to pixels
+			const val = parseLengthToPixels(
+				token.value,
+				containerSize,
+				fontSize,
+				rootFontSize,
+			);
+			if (val === null) return null;
+			return { type: "number", value: val };
+		});
+
+		if (resolved.some((t) => t === null)) return null;
+
+		// First pass: handle * and /
+		let i = 0;
+		while (i < resolved.length) {
+			if (
+				resolved[i].type === "operator" &&
+				(resolved[i].value === "*" || resolved[i].value === "/")
+			) {
+				const left = resolved[i - 1].value;
+				const right = resolved[i + 1].value;
+				let result;
+
+				if (resolved[i].value === "*") {
+					result = left * right;
+				} else {
+					if (right === 0) return null; // Division by zero
+					result = left / right;
+				}
+
+				// Replace the three tokens with the result
+				resolved.splice(i - 1, 3, { type: "number", value: result });
+				// Don't increment i, check this position again
+			} else {
+				i++;
+			}
+		}
+
+		// Second pass: handle + and -
+		i = 0;
+		while (i < resolved.length) {
+			if (
+				resolved[i].type === "operator" &&
+				(resolved[i].value === "+" || resolved[i].value === "-")
+			) {
+				const left = resolved[i - 1].value;
+				const right = resolved[i + 1].value;
+				let result;
+
+				if (resolved[i].value === "+") {
+					result = left + right;
+				} else {
+					result = left - right;
+				}
+
+				// Replace the three tokens with the result
+				resolved.splice(i - 1, 3, { type: "number", value: result });
+				// Don't increment i
+			} else {
+				i++;
+			}
+		}
+
+		// Should have exactly one number left
+		if (resolved.length !== 1 || resolved[0].type !== "number") {
+			return null;
+		}
+
+		return resolved[0].value;
+	}
+
+	/**
+	 * Tokenize a calc() expression into values and operators.
+	 * Handles nested functions and parentheses.
+	 */
+	function tokenizeCalcExpression(expr) {
+		const tokens = [];
+		let current = "";
+		let parenDepth = 0;
+		let i = 0;
+
+		while (i < expr.length) {
+			const char = expr[i];
+
+			if (char === "(") {
+				parenDepth++;
+				current += char;
+				i++;
+			} else if (char === ")") {
+				parenDepth--;
+				current += char;
+				i++;
+			} else if (parenDepth === 0 && /\s/.test(char)) {
+				// Whitespace at depth 0 - might be around an operator
+				if (current.trim()) {
+					tokens.push({ type: "value", value: current.trim() });
+					current = "";
+				}
+				i++;
+			} else if (
+				parenDepth === 0 &&
+				(char === "+" || char === "-") &&
+				// Check if this is an operator (preceded by whitespace or another token)
+				// and not a sign for a number
+				i > 0 &&
+				/\s/.test(expr[i - 1])
+			) {
+				// This is an operator
+				if (current.trim()) {
+					tokens.push({ type: "value", value: current.trim() });
+					current = "";
+				}
+				tokens.push({ type: "operator", value: char });
+				i++;
+				// Skip trailing whitespace
+				while (i < expr.length && /\s/.test(expr[i])) i++;
+			} else if (parenDepth === 0 && (char === "*" || char === "/")) {
+				// These are always operators in calc()
+				if (current.trim()) {
+					tokens.push({ type: "value", value: current.trim() });
+					current = "";
+				}
+				tokens.push({ type: "operator", value: char });
+				i++;
+				// Skip trailing whitespace
+				while (i < expr.length && /\s/.test(expr[i])) i++;
+			} else {
+				current += char;
+				i++;
+			}
+		}
+
+		if (current.trim()) {
+			tokens.push({ type: "value", value: current.trim() });
+		}
+
+		return tokens;
+	}
+
+	/**
 	 * Parse a CSS length value to pixels
 	 */
 	function parseLengthToPixels(
@@ -77,6 +339,18 @@
 		rootFontSize = 16,
 	) {
 		if (!value || value === "auto" || value === "none") return null;
+
+		value = value.trim();
+
+		// Handle CSS math functions first
+		if (
+			value.startsWith("min(") ||
+			value.startsWith("max(") ||
+			value.startsWith("clamp(") ||
+			value.startsWith("calc(")
+		) {
+			return parseCssMathFunction(value, containerSize, fontSize, rootFontSize);
+		}
 
 		const num = parseFloat(value);
 		if (isNaN(num)) return null;
@@ -102,14 +376,17 @@
 	}
 
 	/**
-	 * Parse minmax() function
+	 * Parse minmax() function with proper handling of nested functions
 	 */
 	function parseMinMax(value) {
-		const match = value.match(/minmax\(\s*([^,]+)\s*,\s*([^)]+)\s*\)/);
-		if (!match) return null;
+		if (!value.startsWith("minmax(")) return null;
+
+		const args = extractFunctionArgs(value, "minmax");
+		if (!args || args.length !== 2) return null;
+
 		return {
-			min: match[1].trim(),
-			max: match[2].trim(),
+			min: args[0],
+			max: args[1],
 		};
 	}
 

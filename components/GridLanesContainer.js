@@ -1,6 +1,6 @@
 /*
   TODO(dania): This is a temporary component to scope the grid-lanes polyfill,
-               will be removed once native support is baseline.
+			   will be removed once native support is baseline.
 */
 
 import "../vendor/grid-lanes-polyfill.js";
@@ -45,8 +45,10 @@ export function GridLanesContainer({ children, style, ...props }) {
 				display: supportsNative ? "grid-lanes" : "grid",
 
 				"--grid-lanes-polyfill": 1,
-				"grid-template-columns": "repeat(auto-fill, minmax(200px, 1fr))",
-				gap: "1rem",
+				"grid-template-columns":
+					"repeat(auto-fill, minmax(min(100%, 12rem), 1fr))",
+				gap: "clamp(var(--space-xs), 2vw, var(--space-sm))",
+				"margin-block": "clamp(var(--space-sm), 4vw, var(--space-md))",
 				...style,
 			}}
 			...${props}
