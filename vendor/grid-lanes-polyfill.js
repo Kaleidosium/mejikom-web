@@ -1415,9 +1415,22 @@
 	else if (typeof module === "object" && module.exports) {
 		module.exports = GridLanesPolyfill;
 	}
-	// Global
-	else {
+	// Global (polyfill behavior - always attach for backwards compatibility)
+	if (typeof globalThis !== "undefined") {
+		globalThis.GridLanesPolyfill = GridLanesPolyfill;
+	} else if (typeof window !== "undefined") {
+		window.GridLanesPolyfill = GridLanesPolyfill;
+	} else if (typeof global !== "undefined") {
 		global.GridLanesPolyfill = GridLanesPolyfill;
+	}
+
+	// ESM export (ponyfill behavior - allows direct import)
+	// This enables: import { GridLanesPolyfill } from "./grid-lanes-polyfill.js"
+	if (typeof exports === "object" && typeof module !== "undefined") {
+		// Already handled by CommonJS above
+	} else {
+		// For ESM bundlers, we expose via global and rely on a re-export wrapper
+		// or users can access window.GridLanesPolyfill
 	}
 })(
 	typeof globalThis !== "undefined" ? globalThis
@@ -1425,3 +1438,12 @@
 	: typeof global !== "undefined" ? global
 	: this,
 );
+
+// ESM Named Export (ponyfill pattern)
+// This allows: import { GridLanesPolyfill } from "./grid-lanes-polyfill.js"
+// The IIFE above still runs and attaches to global for polyfill compatibility
+export const GridLanesPolyfill =
+	typeof globalThis !== "undefined" ? globalThis.GridLanesPolyfill
+	: typeof window !== "undefined" ? window.GridLanesPolyfill
+	: typeof global !== "undefined" ? global.GridLanesPolyfill
+	: null;

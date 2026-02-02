@@ -3,7 +3,7 @@
 			   will be removed once native support is baseline.
 */
 
-import "../vendor/grid-lanes-polyfill.js";
+import { GridLanesPolyfill as polyfill } from "../vendor/grid-lanes-polyfill.js";
 
 import { html } from "htm/preact";
 import { useEffect, useRef } from "preact/hooks";
@@ -11,8 +11,6 @@ import { useEffect, useRef } from "preact/hooks";
 export function GridLanesContainer({ children, style, ...props }) {
 	const containerRef = useRef(null);
 
-	const polyfill =
-		typeof window !== "undefined" ? window.GridLanesPolyfill : null;
 	const supportsNative = polyfill ? polyfill.supportsGridLanes() : false;
 
 	// Apply the grid-lanes polyfill after paint.
