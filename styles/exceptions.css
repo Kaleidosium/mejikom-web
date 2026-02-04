@@ -2,6 +2,10 @@
 	aspect-ratio: 1 / 1;
 }
 
+.image-grid-lanes[data-variant="gallery"] {
+	margin-block-end: 0;
+}
+
 .background[data-state~="fixed"] {
 	position: fixed;
 	inset-block-start: 0;
